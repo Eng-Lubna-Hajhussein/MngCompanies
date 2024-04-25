@@ -55,6 +55,7 @@ function Companies({
         <Select
           sx={styles.select}
           value={companyID}
+          defaultValue={companyID}
           onChange={(e) => handleCompanyIDChange(e.target.value)}
         >
           {appState?.systemInfo?.companies?.map((company) => (

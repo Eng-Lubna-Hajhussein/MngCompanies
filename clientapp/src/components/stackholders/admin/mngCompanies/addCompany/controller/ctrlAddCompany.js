@@ -8,6 +8,7 @@ export const ctrlAddCompany = {
     companyName,
     logo,
     setLogo,
+    handleCompanyIDChange
   }) => {
     try {
       const objInput = {
@@ -16,6 +17,9 @@ export const ctrlAddCompany = {
       };
       const company = await createCompany(objInput);
       if (company.id) {
+        if(!appState.systemInfo.companies.length){
+          handleCompanyIDChange(company.id)
+        }
         appState.systemInfo.companies = [
           ...appState.systemInfo.companies,
           company,

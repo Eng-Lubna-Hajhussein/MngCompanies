@@ -44,7 +44,9 @@ const styles = {
 function EditCompany({ open, handleClose, appState, appDispatch, company }) {
   const [logo, setLogo] = useState();
   useEffect(() => {
-    setLogo(company.logo);
+    if (company?.logo) {
+      setLogo(company.logo);
+    }
   }, [company]);
 
   const onLogoChange = async (e) => {
@@ -129,7 +131,7 @@ function EditCompany({ open, handleClose, appState, appDispatch, company }) {
                   type="text"
                   fullWidth
                   label={"Company Name"}
-                  defaultValue={company.name}
+                  defaultValue={company?.name}
                   variant="outlined"
                 />
               </Grid>

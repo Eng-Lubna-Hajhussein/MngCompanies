@@ -41,7 +41,7 @@ function RouteMngCompanies() {
   }, [companyID, companiesInfo[companyID]?.branches, googleMapEls]);
 
   const { initMapScript, initMap } = useGoogleMap();
-  
+
   useEffect(() => {
     initMapScript(Google_Map_Api_Key).then(() => {
       googleMapEls.current.forEach((googleMapEl, index) => {
@@ -82,13 +82,17 @@ function RouteMngCompanies() {
 
   return (
     <React.Fragment>
-      <Header
-        navList={Admin_App_NavList}
-        logo={logo}
-      />
-      {isLoading && <Grid container height={'100vh'} justifyContent={'center'} alignContent={'center'}>
+      <Header navList={Admin_App_NavList} logo={logo} />
+      {isLoading && (
+        <Grid
+          container
+          height={"100vh"}
+          justifyContent={"center"}
+          alignContent={"center"}
+        >
           <CircularProgress color="secondary" />
-        </Grid>}
+        </Grid>
+      )}
       {!isLoading && (
         <Grid container my={4} sx={{ paddingX: "25px" }}>
           <Grid item xs={12} mb={4} container justifyContent={"end"}>
@@ -99,12 +103,12 @@ function RouteMngCompanies() {
               onClick={handleAddCompanyOpen}
             />
           </Grid>
-          {!!appState?.systemInfo?.companies?.length && (
+          {!!(appState?.systemInfo?.companies?.length) && (
             <Grid item xs={12}>
               <Divider />
             </Grid>
           )}
-          {!!appState?.systemInfo?.companies?.length && (
+          {!!(appState?.systemInfo?.companies?.length) && (
             <Grid item xs={12} container mt={5}>
               <Companies
                 appState={appState}
@@ -116,7 +120,7 @@ function RouteMngCompanies() {
                 handleEditCompanyOpen={handleEditCompanyOpen}
                 navigate={navigate}
               />
-              {!!companiesInfo[companyID]?.branches?.length && (
+              {!!(companiesInfo[companyID]?.branches?.length) && (
                 <Branches
                   appState={appState}
                   appDispatch={appDispatch}
@@ -137,6 +141,7 @@ function RouteMngCompanies() {
         open={addCompanyOpen}
         appState={appState}
         appDispatch={appDispatch}
+        handleCompanyIDChange={handleCompanyIDChange}
       />
       <EditCompany
         handleClose={handleEditCompanyClose}

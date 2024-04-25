@@ -17,7 +17,9 @@ export const ctrlCompanies = {
         );
         appState.systemInfo.companies = updatedCompanies;
         appDispatch();
-        handleCompanyIDChange(updatedCompanies[0].id);
+        if (updatedCompanies?.length) {
+          handleCompanyIDChange(updatedCompanies[0].id);
+        }
       }
       handleIsLoadingChange(false);
     } catch (err) {

@@ -41,7 +41,13 @@ const styles = {
   },
 };
 
-function AddCompany({ open, handleClose, appState, appDispatch }) {
+function AddCompany({
+  open,
+  handleClose,
+  appState,
+  appDispatch,
+  handleCompanyIDChange,
+}) {
   const [logo, setLogo] = useState();
 
   const onLogoChange = (e) => {
@@ -65,6 +71,7 @@ function AddCompany({ open, handleClose, appState, appDispatch }) {
       companyName,
       logo,
       setLogo,
+      handleCompanyIDChange
     });
     handleClose();
   };

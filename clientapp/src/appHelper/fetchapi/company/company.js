@@ -48,7 +48,7 @@ export const deleteCompany = async (companyID) => {
     const requestBody = {
       query: query,
     };
-    const result = await fetchData(requestBody);    
+    const result = await fetchData(requestBody);
     return result?.data?.deleteCompany;
   };
   

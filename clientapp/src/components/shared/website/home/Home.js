@@ -9,8 +9,8 @@ function Home({ navList, logo, companies }) {
     <React.Fragment>
       <Header navList={navList} logo={logo} />
       <Hero />
-      {companies?.length && <CompaniesCross companies={companies} />}
-      {companies?.length && <Companies companies={companies} />}
+      {!!(companies?.length) && <CompaniesCross companies={companies} />}
+      {!!(companies?.length) && <Companies companies={companies} />}
     </React.Fragment>
   );
 }
